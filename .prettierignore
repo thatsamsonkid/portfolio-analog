@@ -1,0 +1,10 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+.angular
+.prettierignore
+/tmp
+/node_modules
+/stats.html
+
+/.nx/cache
