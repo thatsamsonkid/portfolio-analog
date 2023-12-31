@@ -5,132 +5,195 @@
 @tailwind components;
 @tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
-:root {
-font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-font-size: 16px;
-line-height: 24px;
-font-weight: 400;
-
-color-scheme: light dark;
-color: rgba(255, 255, 255, 0.87);
-background-color: #242424;
-
-font-synthesis: none;
-text-rendering: optimizeLegibility;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
--webkit-text-size-adjust: 100%;
-}
-
-a {
-font-weight: 500;
-color: #646cff;
-text-decoration: inherit;
-}
-a:hover {
-color: #535bf2;
-}
-
-body {
-margin: 0;
-display: flex;
-place-items: center;
-min-width: 320px;
-min-height: 100vh;
-}
-
-h1 {
-font-size: 3.2em;
-line-height: 1.1;
-}
-
-button {
-border-radius: 8px;
-border: 1px solid transparent;
-padding: 0.6em 1.2em;
-font-size: 1em;
-font-weight: 500;
-font-family: inherit;
-background-color: #1a1a1a;
-cursor: pointer;
-transition: border-color 0.25s;
-}
-button:hover {
-border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-padding: 2em;
-}
-
-.logo {
-@apply box-content;
-}
-
 @media (prefers-color-scheme: light) {
-:root {
-color: #213547;
-background-color: #ffffff;
-}
-a:hover {
-color: #747bff;
-}
-button {
-background-color: #f9f9f9;
-}
-}
-
-
-:root {
---font-sans: ''
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
+	a:hover {
+		color: #747bff;
+	}
+	button {
+		background-color: #f9f9f9;
+	}
 }
 
 :root {
---background: 0 0% 100%;
---foreground: 0 0% 3.9%;
---muted: 0 0% 96.1%;
---muted-foreground: 0 0% 45.1%;
---popover: 0 0% 100%;
---popover-foreground: 0 0% 3.9%;
---card: 0 0% 100%;
---card-foreground: 0 0% 3.9%;
---border: 0 0% 89.8%;
---input: 0 0% 89.8%;
---primary: 0 0% 9%;
---primary-foreground: 0 0% 98%;
---secondary: 0 0% 96.1%;
---secondary-foreground: 0 0% 9%;
---accent: 0 0% 96.1%;
---accent-foreground: 0 0% 9%;
---destructive: 0 84.2% 60.2%;
---destructive-foreground: 0 0% 98%;
---ring: 0 0% 3.9%;
---radius: 0.5rem;
+	--font-sans: '';
+}
+
+:root {
+	--background: 0 0% 100%;
+	--foreground: 0 0% 3.9%;
+	--muted: 0 0% 96.1%;
+	--muted-foreground: 0 0% 45.1%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 0 0% 3.9%;
+	--card: 0 0% 100%;
+	--card-foreground: 0 0% 3.9%;
+	--border: 0 0% 89.8%;
+	--input: 0 0% 89.8%;
+	--primary: 0 0% 9%;
+	--primary-foreground: 0 0% 98%;
+	--secondary: 0 0% 96.1%;
+	--secondary-foreground: 0 0% 9%;
+	--accent: 0 0% 96.1%;
+	--accent-foreground: 0 0% 9%;
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 0 0% 98%;
+	--ring: 0 0% 3.9%;
+	--radius: 0.5rem;
 }
 
 .dark {
---background: 0 0% 3.9%;
---foreground: 0 0% 98%;
---muted: 0 0% 14.9%;
---muted-foreground: 0 0% 63.9%;
---popover: 0 0% 3.9%;
---popover-foreground: 0 0% 98%;
---card: 0 0% 3.9%;
---card-foreground: 0 0% 98%;
---border: 0 0% 14.9%;
---input: 0 0% 14.9%;
---primary: 0 0% 98%;
---primary-foreground: 0 0% 9%;
---secondary: 0 0% 14.9%;
---secondary-foreground: 0 0% 98%;
---accent: 0 0% 14.9%;
---accent-foreground: 0 0% 98%;
---destructive: 0 62.8% 30.6%;
---destructive-foreground: 0 0% 98%;
---ring: 0 0% 83.1%;
+	--background: 0 0% 3.9%;
+	--foreground: 0 0% 98%;
+	--muted: 0 0% 14.9%;
+	--muted-foreground: 0 0% 63.9%;
+	--popover: 0 0% 3.9%;
+	--popover-foreground: 0 0% 98%;
+	--card: 0 0% 3.9%;
+	--card-foreground: 0 0% 98%;
+	--border: 0 0% 14.9%;
+	--input: 0 0% 14.9%;
+	--primary: 0 0% 98%;
+	--primary-foreground: 0 0% 9%;
+	--secondary: 0 0% 14.9%;
+	--secondary-foreground: 0 0% 98%;
+	--accent: 0 0% 14.9%;
+	--accent-foreground: 0 0% 98%;
+	--destructive: 0 62.8% 30.6%;
+	--destructive-foreground: 0 0% 98%;
+	--ring: 0 0% 83.1%;
+}
+
+.max-content-width {
+	max-width: 1200px;
+}
+
+body {
+	@apply text-light-purple-fax bg-black;
+}
+
+@font-face {
+	font-family: FireSans;
+	font-style: normal;
+	font-weight: 300;
+	src: url(/fonts/firasans-light.woff2) format('woff2');
+}
+@font-face {
+	font-family: FireSans;
+	font-style: normal;
+	font-weight: 400;
+	src: url(/fonts/firasans-regular.woff2) format('woff2');
+}
+@font-face {
+	font-family: FireSans;
+	font-style: normal;
+	font-weight: 500;
+	src: url(/fonts/firasans-medium.woff2) format('woff2');
+}
+@font-face {
+	font-family: FireSans;
+	font-style: italic;
+	font-weight: 500;
+	src: url(/fonts/firasans-medium-italic.woff2) format('woff2');
+}
+@font-face {
+	font-family: FireSans;
+	font-style: normal;
+	font-weight: 600;
+	src: url(/fonts/firasans-semibold.woff2) format('woff2');
+}
+@font-face {
+	font-family: FireSans;
+	font-style: normal;
+	font-weight: 700;
+	src: url(/fonts/firasans-bold.woff2) format('woff2');
+}
+@font-face {
+	font-family: FireSans;
+	font-style: normal;
+	font-weight: 800;
+	src: url(/fonts/firasans-extrabold.woff2) format('woff2');
+}
+@font-face {
+	font-family: sam-font;
+	src: url(/fonts/sam-font.woff) format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+[data-icon]:before {
+	content: attr(data-icon);
+}
+[class*=' icon-']:before,
+[class^='icon-']:before,
+[data-icon]:before {
+	font-family: sam-font !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	speak: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-about:before {
+	content: 'd';
+}
+.icon-contact:before {
+	content: 'e';
+}
+.icon-home:before {
+	content: 'a';
+}
+.icon-projects:before {
+	content: 'b';
+}
+.icon-skills:before {
+	content: 'c';
+}
+.icon-linkedin:before {
+	content: 'l';
+}
+.icon-instagram:before {
+	content: 'i';
+}
+.icon-gitlab:before {
+	content: 'g';
+}
+.icon-img {
+	max-width: 30px;
+}
+
+.circle-display {
+	border: 1px solid var(--blue);
+	width: 125px;
+	height: 125px;
+	border-radius: 1000px;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-flow: column;
+	padding: 15px;
+	box-shadow: 4px 8px 10px 0.5px #22282f;
+}
+
+.circle-display.circle--primary {
+	@apply bg-hip-black text-ocean-blue border-ocean-blue border-2 border-solid;
+}
+
+.circle-display.circle--primary .circle-display__description,
+.circle-display.circle--secondary .circle-display__description {
+	@apply text-gray text-xs italic;
+}
+
+.circle-display.circle--secondary {
+	@apply bg-ocean-blue text-hip-black border-2;
 }
