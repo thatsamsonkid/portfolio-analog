@@ -15,31 +15,25 @@ import NavItemComponent from './nav-item.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [NavItemComponent],
 	template: `
-		<div class="flex rounded-3xl md:hidden">
-			<ul class="" id="menu" role="menu" aria-labelledby="menubutton">
-				<li role="presentation">
-					<app-nav-item link="#home" type="home">Back to Top</app-nav-item>
-				</li>
-				<li role="presentation">
-					<app-nav-item type="about" link="#about">
-						To about section
-					</app-nav-item>
-				</li>
-				<li role="presentation">
-					<app-nav-item type="projects" link="#professional">
-						To professional section
-					</app-nav-item>
-				</li>
-				<li role="presentation">
-					<app-nav-item type="skills" link="#skills">
-						To skills section
-					</app-nav-item>
-				</li>
-				<li role="presentation">
-					<app-nav-item type="contact" link="#contact">
-						To contact section
-					</app-nav-item>
-				</li>
+		<div
+			class="data-[expanded=true]:bg-hip-black/60 fixed bottom-5 right-5 flex-col overflow-hidden rounded-3xl md:hidden"
+			[attr.data-expanded]="expanded()"
+		>
+			<ul
+				class="relative top-3 h-0 opacity-0 data-[expanded=true]:h-[300px] data-[expanded=true]:opacity-100"
+				id="menu"
+				role="menu"
+				aria-labelledby="menubutton"
+				[attr.data-expanded]="expanded()"
+				style="transition: height .3s ease,opacity .3s ease;"
+			>
+				@for (link of navLinks; track link.link) {
+					<li>
+						<app-nav-item [link]="link.link" [type]="link.type">
+							{{ link.altText }}
+						</app-nav-item>
+					</li>
+				}
 			</ul>
 			<div
 				class="hidden h-[45px] min-h-[45px] w-[45px] items-center justify-center md:flex"
@@ -51,12 +45,27 @@ import NavItemComponent from './nav-item.component';
 				id="menubutton"
 				aria-haspopup="true"
 				aria-controls="menu"
-				class="btn z-20 h-[45px] min-h-[45px] w-[45px] rounded-full border-0 opacity-75 hover:focus:opacity-100 md:hidden"
+				class="sticky z-20 inline-flex h-[45px] min-h-[45px] w-[45px] shrink-0 items-center justify-center rounded-full border-0 bg-black px-2 opacity-75 hover:focus:opacity-100 md:hidden"
+				(click)="toggleNav()"
 			>
-				<div>
-					<div></div>
-					<div></div>
-					<div></div>
+				<div class="relative left-0 right-0 block h-6 w-full cursor-pointer">
+					<!-- top: 1px; left: 3px; width: 25px; transform: rotate(45deg); -->
+
+					<div
+						class="bg-ocean-blue relative top-0 mb-[6px] h-1 w-full rounded-sm data-[expanded=true]:left-[6px] data-[expanded=true]:top-[2px] data-[expanded=true]:w-6 data-[expanded=true]:rotate-45"
+						style="transform-origin: 0;transition: transform .3s ease,top .3s ease,width .3s ease,right .3s ease;"
+						[attr.data-expanded]="expanded()"
+					></div>
+					<div
+						class="bg-ocean-blue relative top-0 mb-[6px] h-1 w-full rounded-sm data-[expanded=true]:right-[-6px] data-[expanded=true]:top-[9px] data-[expanded=true]:w-6 data-[expanded=true]:-rotate-45"
+						style="transform-origin: 0;transition: transform .3s ease,top .3s ease,width .3s ease,right .3s ease;"
+						[attr.data-expanded]="expanded()"
+					></div>
+					<div
+						class="bg-ocean-blue relative top-0 mb-[6px] h-1 w-full rounded-sm data-[expanded=true]:-top-[1px] data-[expanded=true]:right-[1px] data-[expanded=true]:w-6 data-[expanded=true]:rotate-45"
+						style="transform-origin: right;transition: transform .3s ease,top .3s ease,width .3s ease,right .3s ease;"
+						[attr.data-expanded]="expanded()"
+					></div>
 				</div>
 			</button>
 		</div>
@@ -66,6 +75,18 @@ export default class NavigationComponent {
 	private scrollObserver = inject(ScrollspyService);
 	expanded = signal(false);
 	bottomReached = signal(false);
+
+	navLinks = [
+		{ altText: 'Back to top', link: 'home', type: 'home' },
+		{ altText: 'To about section', link: 'about', type: 'about' },
+		{
+			altText: 'To professional section',
+			link: 'professional',
+			type: 'projects',
+		},
+		{ altText: 'To skils section', link: 'skills', type: 'skills' },
+		{ altText: 'To contact section', link: 'contact', type: 'contact' },
+	];
 
 	constructor() {
 		this.scrollObserver.scrollObserver.pipe(
