@@ -35,6 +35,12 @@ export default defineConfig(({ mode }) => ({
 					host: 'https://sammymohamed.com/',
 				},
 			},
+			nitro: {
+				output: {
+					dir: './dist/analog/public',
+					serverDir: './dist/analog/public',
+				},
+			},
 		}),
 	],
 	test: {
