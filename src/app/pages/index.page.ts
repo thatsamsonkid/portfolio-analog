@@ -25,7 +25,7 @@ import SkillsComponent from '../content/skills.component';
 	template: `
 		<main class="">
 			<section
-				class="flex min-h-screen flex-col content-center items-center"
+				class="flex min-h-screen flex-col items-center justify-center"
 				id="home"
 			>
 				<div class="mt-40 pb-40">
