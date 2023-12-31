@@ -19,10 +19,11 @@ export default defineConfig(({ mode }) => ({
 			'@angular/platform-browser/animations',
 			'@ng-icons/core',
 			'@ng-icons/font-awesome',
+			'@spartan-ng/*',
 		],
 	},
 	ssr: {
-		noExternal: ['@ng-icons/core', '@ng-icons/font-awesome'],
+		noExternal: ['@ng-icons/core', '@ng-icons/font-awesome', '@spartan-ng/*'],
 	},
 	plugins: [analog()],
 	test: {

@@ -7,6 +7,7 @@ import {
 } from '@ng-icons/font-awesome/brands';
 import NavigationComponent from '../components/navigation/navigation.component';
 import AboutMeComponent from '../content/about-me.component';
+import ExperienceComponent from '../content/experience.component';
 import SkillsComponent from '../content/skills.component';
 @Component({
 	selector: 'app-home',
@@ -15,6 +16,7 @@ import SkillsComponent from '../content/skills.component';
 		NavigationComponent,
 		AboutMeComponent,
 		SkillsComponent,
+		ExperienceComponent,
 		NgIconComponent,
 	],
 	providers: [
@@ -51,7 +53,7 @@ import SkillsComponent from '../content/skills.component';
 				id="professional"
 				class="max-content-width mx-auto min-h-screen px-5 md:px-12"
 			>
-				<!-- <Professional></Professional> -->
+				<app-exp></app-exp>
 			</section>
 			<section
 				id="skills"
