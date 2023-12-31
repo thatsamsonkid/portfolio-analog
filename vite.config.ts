@@ -19,13 +19,24 @@ export default defineConfig(({ mode }) => ({
 			'@angular/platform-browser/animations',
 			'@ng-icons/core',
 			'@ng-icons/font-awesome',
-			'@spartan-ng/*',
+			'@spartan/**',
 		],
 	},
-	ssr: {
-		noExternal: ['@ng-icons/core', '@ng-icons/font-awesome', '@spartan-ng/*'],
-	},
-	plugins: [analog()],
+	// ssr: {
+	// 	noExternal: ['@ng-icons/core', '@ng-icons/font-awesome', '@spartan/**'],
+	// },
+	plugins: [
+		analog({
+			ssr: false,
+			static: true,
+			prerender: {
+				routes: async () => ['/'],
+				sitemap: {
+					host: 'https://sammymohamed.com/',
+				},
+			},
+		}),
+	],
 	test: {
 		globals: true,
 		environment: 'jsdom',
