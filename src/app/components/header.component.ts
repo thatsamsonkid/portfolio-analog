@@ -16,10 +16,11 @@ import { ScrollspyService } from '../core/scrollspy.service';
 	selector: 'app-header',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	styleUrls: ['./header.css'],
 	template: `
 		<header
 			#header
-			class="fixed z-10 h-[102px] w-full bg-black px-4 py-3 text-white opacity-100 data-[elevated=true]:h-[60px] data-[elevated=true]:shadow-lg"
+			class="global-header fixed z-10 h-[102px] w-full bg-black px-4 py-3 text-white opacity-100 before:hidden after:hidden data-[elevated=true]:h-[60px] data-[elevated=true]:shadow-lg md:before:block md:after:block"
 			[attr.data-elevated]="elevated()"
 			style="transition: height .4s,transform .4s;"
 		>

@@ -1,0 +1,40 @@
+.global-header[data-elevated='true']::before {
+	opacity: 1;
+	z-index: 1;
+	height: 102px;
+}
+.global-header[data-elevated='true']::after {
+	opacity: 1;
+	z-index: 1;
+	transition: opacity 3s;
+}
+
+.global-header::before {
+	content: '';
+	width: 1px;
+	height: 0px;
+	transition:
+		transform 0.4s,
+		opacity 0.2s,
+		height 0.6s;
+	transform-origin: top;
+	position: absolute;
+	right: 35px;
+	top: 61px;
+	opacity: 0;
+	z-index: -1;
+	@apply bg-ocean-blue;
+}
+
+.global-header::after {
+	content: 'Just a Dev';
+	transform: rotate(90deg);
+	transition:
+		transform 0.4s,
+		opacity 0.4s;
+	position: absolute;
+	right: -3px;
+	top: 200px;
+	opacity: 0;
+	z-index: -1;
+}
