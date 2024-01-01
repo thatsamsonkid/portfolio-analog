@@ -36,6 +36,7 @@ export default defineConfig(({ mode }) => ({
 				// },
 			},
 			nitro: {
+				preset: 'cloudflare-pages',
 				output: {
 					dir: './dist/analog/public',
 					serverDir: './dist/analog/public',
