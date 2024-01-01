@@ -23,7 +23,7 @@ import SkillsComponent from '../content/skills.component';
 		provideIcons({ faBrandGithub, faBrandLinkedin, faBrandXTwitter }),
 	],
 	template: `
-		<main class="">
+		<main>
 			<section
 				class="flex min-h-screen flex-col items-center justify-center"
 				id="home"

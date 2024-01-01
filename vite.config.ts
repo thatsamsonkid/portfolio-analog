@@ -14,26 +14,29 @@ export default defineConfig(({ mode }) => ({
 	},
 	optimizeDeps: {
 		include: [
+			'@angular/core',
 			'@angular/common',
 			'@angular/forms',
 			'@angular/platform-browser/animations',
 			'@ng-icons/core',
 			'@ng-icons/font-awesome',
-			'@spartan/**',
+			'@spartan-ng/**/*',
 		],
 	},
 	ssr: {
-		noExternal: ['@ng-icons/core', '@ng-icons/font-awesome', '@spartan/**'],
+		noExternal: [
+			'@angular/core',
+			'@ng-icons/core',
+			'@ng-icons/font-awesome',
+			'@spartan-ng/**/*',
+		],
 	},
 	plugins: [
 		analog({
-			ssr: false,
-			static: true,
 			prerender: {
-				routes: ['/'],
-				// sitemap: {
-				//   host: 'https://analogjs.org/',
-				// },
+				sitemap: {
+					host: 'https://sammymohamed.com/',
+				},
 			},
 			nitro: {
 				preset: 'cloudflare_pages',
