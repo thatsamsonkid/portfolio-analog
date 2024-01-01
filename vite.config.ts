@@ -22,16 +22,21 @@ export default defineConfig(({ mode }) => ({
 			'@spartan/**',
 		],
 	},
-	// ssr: {
-	// 	noExternal: ['@ng-icons/core', '@ng-icons/font-awesome', '@spartan/**'],
-	// },
+	ssr: {
+		noExternal: ['@ng-icons/core', '@ng-icons/font-awesome', '@spartan/**'],
+	},
 	plugins: [
 		analog({
 			ssr: false,
 			static: true,
+			prerender: {
+				routes: ['/'],
+				// sitemap: {
+				//   host: 'https://analogjs.org/',
+				// },
+			},
 			nitro: {
-				preset: 'cloudflare-pages',
-				rollupConfig: { external: ['cloudflare:sockets'] },
+				preset: 'cloudflare_pages',
 				output: {
 					dir: './dist/analog/public',
 					serverDir: './dist/analog/public',
