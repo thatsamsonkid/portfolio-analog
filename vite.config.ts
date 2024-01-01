@@ -29,14 +29,9 @@ export default defineConfig(({ mode }) => ({
 		analog({
 			ssr: false,
 			static: true,
-			prerender: {
-				routes: async () => ['/'],
-				// sitemap: {
-				// 	host: 'https://sammymohamed.com/',
-				// },
-			},
 			nitro: {
 				preset: 'cloudflare-pages',
+				rollupConfig: { external: ['cloudflare:sockets'] },
 				output: {
 					dir: './dist/analog/public',
 					serverDir: './dist/analog/public',
