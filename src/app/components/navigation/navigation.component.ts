@@ -16,7 +16,7 @@ import NavItemComponent from './nav-item.component';
 	imports: [NavItemComponent],
 	template: `
 		<div
-			class="data-[expanded=true]:bg-hip-black/60 fixed bottom-5 right-5 flex-col overflow-hidden rounded-3xl md:hidden"
+			class="fixed bottom-5 right-5 flex-col overflow-hidden rounded-3xl data-[expanded=true]:bg-black/80 md:hidden"
 			[attr.data-expanded]="expanded()"
 		>
 			<ul
@@ -77,15 +77,15 @@ export default class NavigationComponent {
 	bottomReached = signal(false);
 
 	navLinks = [
-		{ altText: 'Back to top', link: 'home', type: 'home' },
-		{ altText: 'To about section', link: 'about', type: 'about' },
+		{ altText: 'Back to top', link: '#home', type: 'home' },
+		{ altText: 'To about section', link: '#about', type: 'about' },
 		{
 			altText: 'To professional section',
-			link: 'professional',
+			link: '#professional',
 			type: 'projects',
 		},
-		{ altText: 'To skils section', link: 'skills', type: 'skills' },
-		{ altText: 'To contact section', link: 'contact', type: 'contact' },
+		{ altText: 'To skils section', link: '#skills', type: 'skills' },
+		{ altText: 'To contact section', link: '#contact', type: 'contact' },
 	];
 
 	constructor() {

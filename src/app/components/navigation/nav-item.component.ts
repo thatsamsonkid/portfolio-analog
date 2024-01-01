@@ -14,7 +14,7 @@ import {
 			class="flex h-[45px] w-[45px] flex-col items-center justify-center text-center"
 		>
 			<a
-				[attr.href]="link"
+				[attr.href]="_link()"
 				class="text-ocean-blue hover:text-blue-jaunts text-2xl"
 				role="menuitem"
 			>
