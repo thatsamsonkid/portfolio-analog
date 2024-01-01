@@ -31,9 +31,9 @@ export default defineConfig(({ mode }) => ({
 			static: true,
 			prerender: {
 				routes: async () => ['/'],
-				sitemap: {
-					host: 'https://sammymohamed.com/',
-				},
+				// sitemap: {
+				// 	host: 'https://sammymohamed.com/',
+				// },
 			},
 			nitro: {
 				output: {
