@@ -1,0 +1,3 @@
+Sitemap: https://sammymohamed.com/sitemap.xml
+User-agent: *
+Disallow: /api/*
