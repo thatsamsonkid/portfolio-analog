@@ -15,8 +15,7 @@ import {
 		>
 			<a
 				[attr.href]="_link()"
-				class="text-ocean-blue hover:text-blue-jaunts text-2xl"
-				role="menuitem"
+				class="text-2xl text-ocean-blue hover:text-blue-jaunts"
 			>
 				<span class="sr-only"><ng-content /></span>
 				<i class="icon icon-{{ _type() }}"></i>
