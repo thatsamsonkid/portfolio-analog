@@ -28,7 +28,7 @@ import { WindowService } from '../core/window.service';
 				<img
 					class="z-20 ml-auto h-[80px] w-[80px] data-[elevated=true]:h-[40px] data-[elevated=true]:w-[40px]"
 					[attr.data-elevated]="elevated()"
-					src="/images/SM-LOGO.png"
+					src="/images/SM-LOGO.webp"
 					alt="Site Logo"
 					style="transition: {{ elevated() ? 'all 0.2s' : 'all 0.6s' }}"
 				/>
