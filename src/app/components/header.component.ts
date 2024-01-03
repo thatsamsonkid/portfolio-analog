@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, filter, map, tap } from 'rxjs';
-import { ScrollspyService } from '../core/scrollspy.service';
+import { WindowService } from '../core/window.service';
 
 @Component({
 	selector: 'app-header',
@@ -37,7 +37,7 @@ import { ScrollspyService } from '../core/scrollspy.service';
 	`,
 })
 export default class HeaderComponent implements OnInit {
-	private scrollObserver = inject(ScrollspyService);
+	private scrollObserver = inject(WindowService);
 	private destroyRef = inject(DestroyRef);
 	private lastScrollAboveThreshold = false;
 

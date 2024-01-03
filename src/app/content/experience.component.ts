@@ -10,7 +10,7 @@ import {
 	inject,
 	signal,
 } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import {
 	BrnTabsContentDirective,
 	BrnTabsDirective,
@@ -18,6 +18,7 @@ import {
 	BrnTabsTriggerDirective,
 } from '@spartan-ng/ui-tabs-brain';
 import { tap } from 'rxjs';
+import { WindowService } from '../core/window.service';
 @Component({
 	selector: 'app-exp',
 	standalone: true,
@@ -49,7 +50,7 @@ import { tap } from 'rxjs';
 					Contractor
 				</button>
 				<span
-					class="bg-ocean-blue absolute bottom-0 h-[2px]"
+					class="absolute bottom-0 h-[2px] bg-ocean-blue"
 					style="left: {{ left() }}px; width: {{
 						width()
 					}}px;transition: width .3s,left .3s;"
@@ -58,7 +59,7 @@ import { tap } from 'rxjs';
 			<div class="p-3" brnTabsContent="fulltime">
 				<h2 class="mb-1">
 					Amtrak -
-					<span class="text-ocean-blue italic">Lead Software Engineer</span>
+					<span class="italic text-ocean-blue">Lead Software Engineer</span>
 				</h2>
 				<p class="mb-3 text-xs">Aug 2018 - Present</p>
 				<ul class="list-disc space-y-4">
@@ -104,7 +105,7 @@ import { tap } from 'rxjs';
 				<div class="mb-6">
 					<h2 class="mb-1">
 						Anheuser-Busch InBev -
-						<span class="text-ocean-blue italic">Software Engineer</span>
+						<span class="italic text-ocean-blue">Software Engineer</span>
 					</h2>
 					<p class="mb-3 text-xs">Sep 2020 - Oct 2021</p>
 					<ul class="md:text-md ml-4 list-disc space-y-4 text-sm">
@@ -129,7 +130,7 @@ import { tap } from 'rxjs';
 				<div>
 					<h2 class="mb-1">
 						Stantec -
-						<span class="text-ocean-blue italic">Software Engineer</span>
+						<span class="italic text-ocean-blue">Software Engineer</span>
 					</h2>
 					<p class="mb-3 text-xs">Apr 2021 - May 2021</p>
 					<ul class="ml-4 list-disc">
@@ -155,13 +156,36 @@ export default class ExperienceComponent implements OnInit {
 	@ViewChildren(BrnTabsTriggerDirective)
 	tabTriggers!: QueryList<BrnTabsTriggerDirective>;
 
+	activeTab = signal('');
+
+	private windowService = inject(WindowService);
+
 	private injector = inject(Injector);
+
+	constructor() {
+		this.windowService.resizeObserver
+			.pipe(
+				tap(
+					() => this.activeTab() && this.updateTabHighlight(this.activeTab()),
+				),
+				takeUntilDestroyed(),
+			)
+			.subscribe();
+	}
 
 	ngOnInit(): void {
 		toObservable(this.tab.$value, {
 			injector: this.injector,
 		})
-			.pipe(tap((val) => val && this.updateTabHighlight(val)))
+			.pipe(
+				tap((val) => {
+					if (val) {
+						this.activeTab.set(val);
+						this.updateTabHighlight(val);
+					}
+				}),
+				takeUntilDestroyed(this.destroyRef),
+			)
 			.subscribe();
 	}
 

@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
-import { ScrollspyService } from '../../core/scrollspy.service';
+import { WindowService } from '../../core/window.service';
 import NavItemComponent from './nav-item.component';
 
 @Component({
@@ -38,7 +38,7 @@ import NavItemComponent from './nav-item.component';
 			<div
 				class="hidden h-[45px] min-h-[45px] w-[45px] items-center justify-center md:flex"
 			>
-				<div class="bg-ocean-blue h-[12px] w-[2px]"></div>
+				<div class="h-[12px] w-[2px] bg-ocean-blue"></div>
 			</div>
 			<button
 				title="Menu Button"
@@ -52,17 +52,17 @@ import NavItemComponent from './nav-item.component';
 					<!-- top: 1px; left: 3px; width: 25px; transform: rotate(45deg); -->
 
 					<div
-						class="bg-ocean-blue relative top-0 mb-[6px] h-1 w-full rounded-sm data-[expanded=true]:left-[6px] data-[expanded=true]:top-[2px] data-[expanded=true]:w-6 data-[expanded=true]:rotate-45"
+						class="relative top-0 mb-[6px] h-1 w-full rounded-sm bg-ocean-blue data-[expanded=true]:left-[6px] data-[expanded=true]:top-[2px] data-[expanded=true]:w-6 data-[expanded=true]:rotate-45"
 						style="transform-origin: 0;transition: transform .3s ease,top .3s ease,width .3s ease,right .3s ease;"
 						[attr.data-expanded]="expanded()"
 					></div>
 					<div
-						class="bg-ocean-blue relative top-0 mb-[6px] h-1 w-full rounded-sm data-[expanded=true]:right-[-6px] data-[expanded=true]:top-[9px] data-[expanded=true]:w-6 data-[expanded=true]:-rotate-45"
+						class="relative top-0 mb-[6px] h-1 w-full rounded-sm bg-ocean-blue data-[expanded=true]:right-[-6px] data-[expanded=true]:top-[9px] data-[expanded=true]:w-6 data-[expanded=true]:-rotate-45"
 						style="transform-origin: 0;transition: transform .3s ease,top .3s ease,width .3s ease,right .3s ease;"
 						[attr.data-expanded]="expanded()"
 					></div>
 					<div
-						class="bg-ocean-blue relative top-0 mb-[6px] h-1 w-full rounded-sm data-[expanded=true]:-top-[1px] data-[expanded=true]:right-[1px] data-[expanded=true]:w-6 data-[expanded=true]:rotate-45"
+						class="relative top-0 mb-[6px] h-1 w-full rounded-sm bg-ocean-blue data-[expanded=true]:-top-[1px] data-[expanded=true]:right-[1px] data-[expanded=true]:w-6 data-[expanded=true]:rotate-45"
 						style="transform-origin: right;transition: transform .3s ease,top .3s ease,width .3s ease,right .3s ease;"
 						[attr.data-expanded]="expanded()"
 					></div>
@@ -72,7 +72,7 @@ import NavItemComponent from './nav-item.component';
 	`,
 })
 export default class NavigationComponent {
-	private scrollObserver = inject(ScrollspyService);
+	private scrollObserver = inject(WindowService);
 	expanded = signal(false);
 	bottomReached = signal(false);
 
