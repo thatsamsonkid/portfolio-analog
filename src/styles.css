@@ -72,7 +72,7 @@
 }
 
 body {
-	@apply text-light-purple-fax bg-black;
+	@apply bg-black text-light-purple-fax;
 }
 
 @font-face {
@@ -186,14 +186,18 @@ body {
 }
 
 .circle-display.circle--primary {
-	@apply bg-hip-black text-ocean-blue border-ocean-blue border-2 border-solid;
+	@apply border-2 border-solid border-ocean-blue bg-hip-black text-ocean-blue;
 }
 
 .circle-display.circle--primary .circle-display__description,
 .circle-display.circle--secondary .circle-display__description {
-	@apply text-gray text-xs italic;
+	@apply text-xs italic text-light-purple-fax;
+}
+
+.circle-display.circle--secondary .circle-display__description {
+	@apply text-xs italic text-hip-black;
 }
 
 .circle-display.circle--secondary {
-	@apply bg-ocean-blue text-hip-black border-2;
+	@apply border-2 bg-ocean-blue text-black;
 }

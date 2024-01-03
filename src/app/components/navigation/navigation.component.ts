@@ -28,7 +28,7 @@ import NavItemComponent from './nav-item.component';
 				style="transition: height .3s ease,opacity .3s ease;"
 			>
 				@for (link of navLinks; track link.link) {
-					<li>
+					<li role="menuitem">
 						<app-nav-item [link]="link.link" [type]="link.type">
 							{{ link.altText }}
 						</app-nav-item>
