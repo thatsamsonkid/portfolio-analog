@@ -48,7 +48,6 @@ export class WindowService {
 			.pipe(throttleTime(50), startWith(start), takeUntil(this.unsubscribe$))
 			// @ts-ignore
 			.subscribe((event: Event<any>) => {
-				console.log(event);
 				const target = event ? event.target : null;
 				if (target) {
 					this.resizeSubject.next({

@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -18,6 +19,7 @@ import SkillsComponent from '../content/skills.component';
 		SkillsComponent,
 		ExperienceComponent,
 		NgIconComponent,
+		NgOptimizedImage,
 	],
 	providers: [
 		provideIcons({ faBrandGithub, faBrandLinkedin, faBrandXTwitter }),
@@ -35,7 +37,7 @@ import SkillsComponent from '../content/skills.component';
 						Sammy Mohamed
 					</h1>
 					<p
-						class="text-ocean-blue mt-0 text-center text-3xl italic tracking-wide"
+						class="mt-0 text-center text-3xl italic tracking-wide text-ocean-blue"
 					>
 						Just a Dev
 					</p>
@@ -101,7 +103,10 @@ import SkillsComponent from '../content/skills.component';
 						<div class="md:mt-12">
 							<img
 								class="mx-auto my-0 h-[186px] w-[364px]"
-								src="/images/SAM_1.svg"
+								ngSrc="/images/SAM_1.svg"
+								width="364"
+								height="186"
+								priority
 								alt="Quetzal Bird Flying over the the Pyramids of Egypt illustrated to refer to Sammy's background"
 							/>
 						</div>

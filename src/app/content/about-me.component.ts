@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import TextImageImageComponent from '../components/text-image/text-image-image.directive';
 import TextImageComponent from '../components/text-image/text-image.component';
@@ -6,7 +7,7 @@ import TextImageComponent from '../components/text-image/text-image.component';
 	selector: 'about-me',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [TextImageComponent, TextImageImageComponent],
+	imports: [TextImageComponent, TextImageImageComponent, NgOptimizedImage],
 	template: `
 		<app-text-image class="mt-3 flex flex-col-reverse gap-3 md:flex-row">
 			<div class="flex-1">
@@ -37,8 +38,10 @@ import TextImageComponent from '../components/text-image/text-image.component';
 			</div>
 			<text-image-img class="flex-1 text-center">
 				<img
-					class="h-[531] w-[402px]"
-					src="/images/new-sammy.png"
+					width="402"
+					height="531"
+					priority
+					ngSrc="/images/new-sammy.png"
 					alt="Sammy Mohamed Portrait"
 				/>
 			</text-image-img>
