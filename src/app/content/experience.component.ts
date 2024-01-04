@@ -7,6 +7,7 @@ import {
 	QueryList,
 	ViewChild,
 	ViewChildren,
+	computed,
 	inject,
 	signal,
 } from '@angular/core';
@@ -33,7 +34,7 @@ import { WindowService } from '../core/window.service';
 		<h1 class="mb-6 text-left text-5xl font-bold">Professional Experience</h1>
 		<div brnTabs="fulltime" class="w-full">
 			<div
-				brnTabsContent
+				brnTabsList
 				class="relative grid w-full grid-cols-2"
 				aria-label="tabs example"
 			>
@@ -57,52 +58,64 @@ import { WindowService } from '../core/window.service';
 				></span>
 			</div>
 			<div class="p-3" brnTabsContent="fulltime">
-				<h2 class="mb-1">
-					Amtrak -
-					<span class="italic text-ocean-blue">Lead Software Engineer</span>
-				</h2>
-				<p class="mb-3 text-xs">Aug 2018 - Present</p>
-				<ul class="list-disc space-y-4">
-					<li>
-						Leading development for various projects primarily for Amtrak.com's
-						booking flow
-					</li>
-					<li>
-						Planning out app features and breaking down business requirements
-						into workable stories for the team.
-					</li>
-					<li>
-						Leading Tech workshops to further the team's development and
-						knowledge of both our Applications and the underlying technologies
-						that they run on
-					</li>
-					<li>
-						Often conduct research and develop Proof of Concept's for new App
-						features, libraries or tool integrations within our code base
-					</li>
-					<li>Leading efforts to improve Amtrak.com site Performance</li>
-					<li>Developing internal tools to help improve Dev and QA process</li>
-					<li>
-						Working with the team to establish and uphold code quality and
-						standards
-					</li>
-					<li>
-						Created technical diagrams to aid visualization of architecture and
-						complex flows
-					</li>
-					<li>
-						Co-lead Angular development efforts for Amtrak's Style Guide and
-						Component Library
-					</li>
-					<li>Developed and provided support for several Amtrak micro-sites</li>
-					<li>
-						Recommended and executed both design and performance improvements on
-						various Amtrak applications
-					</li>
-				</ul>
+				<div
+					class="mb-6 opacity-0 data-[active=true]:opacity-100"
+					[attr.data-active]="fullTimeTabActive()"
+				>
+					<h2 class="mb-1">
+						Amtrak -
+						<span class="italic text-ocean-blue">Lead Software Engineer</span>
+					</h2>
+					<p class="mb-3 text-xs">Aug 2018 - Present</p>
+					<ul class="list-disc space-y-4">
+						<li>
+							Leading development for various projects primarily for
+							Amtrak.com's booking flow
+						</li>
+						<li>
+							Planning out app features and breaking down business requirements
+							into workable stories for the team.
+						</li>
+						<li>
+							Leading Tech workshops to further the team's development and
+							knowledge of both our Applications and the underlying technologies
+							that they run on
+						</li>
+						<li>
+							Often conduct research and develop Proof of Concept's for new App
+							features, libraries or tool integrations within our code base
+						</li>
+						<li>Leading efforts to improve Amtrak.com site Performance</li>
+						<li>
+							Developing internal tools to help improve Dev and QA process
+						</li>
+						<li>
+							Working with the team to establish and uphold code quality and
+							standards
+						</li>
+						<li>
+							Created technical diagrams to aid visualization of architecture
+							and complex flows
+						</li>
+						<li>
+							Co-lead Angular development efforts for Amtrak's Style Guide and
+							Component Library
+						</li>
+						<li>
+							Developed and provided support for several Amtrak micro-sites
+						</li>
+						<li>
+							Recommended and executed both design and performance improvements
+							on various Amtrak applications
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="p-3" brnTabsContent="contractor">
-				<div class="mb-6">
+			<div class="p-3 " brnTabsContent="contractor">
+				<div
+					class="mb-6 opacity-0 data-[active=true]:opacity-100"
+					[attr.data-active]="contractorTabActive()"
+				>
 					<h2 class="mb-1">
 						Anheuser-Busch InBev -
 						<span class="italic text-ocean-blue">Software Engineer</span>
@@ -157,6 +170,9 @@ export default class ExperienceComponent implements OnInit {
 	tabTriggers!: QueryList<BrnTabsTriggerDirective>;
 
 	activeTab = signal('');
+
+	fullTimeTabActive = computed(() => this.activeTab() === 'fulltime');
+	contractorTabActive = computed(() => this.activeTab() === 'contractor');
 
 	private windowService = inject(WindowService);
 
