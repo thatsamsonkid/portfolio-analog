@@ -19,7 +19,7 @@
 }
 
 :root {
-	--font-sans: '';
+	--font-sans: 'FireSans', sans-serif;
 }
 
 :root {
