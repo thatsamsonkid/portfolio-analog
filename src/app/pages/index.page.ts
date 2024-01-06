@@ -30,15 +30,13 @@ import SkillsComponent from '../content/skills.component';
 				class="flex min-h-screen flex-col items-center justify-center"
 				id="home"
 			>
-				<div class="mt-40 pb-40">
+				<div>
 					<h1
-						class="mt-0 text-center text-3xl leading-7 tracking-wide text-white md:text-6xl md:tracking-widest"
+						class="text-3xl leading-7 tracking-wide text-white md:text-6xl md:tracking-widest"
 					>
 						Sammy Mohamed
 					</h1>
-					<p
-						class="mt-0 text-center text-3xl italic tracking-wide text-ocean-blue"
-					>
+					<p class="text-center text-3xl italic tracking-wide text-ocean-blue">
 						Just a Dev
 					</p>
 				</div>
