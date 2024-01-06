@@ -4,6 +4,7 @@ import {
 	BehaviorSubject,
 	Observable,
 	Subject,
+	debounceTime,
 	fromEvent,
 	startWith,
 	takeUntil,
@@ -45,7 +46,7 @@ export class WindowService {
 			y: (window && window.scrollY) || 0,
 		};
 		fromEvent(window as Window, 'resize')
-			.pipe(throttleTime(50), startWith(start), takeUntil(this.unsubscribe$))
+			.pipe(debounceTime(250), startWith(start), takeUntil(this.unsubscribe$))
 			// @ts-ignore
 			.subscribe((event: Event<any>) => {
 				const target = event ? event.target : null;
