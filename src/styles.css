@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	html {
+		font-family: 'FireSans', system-ui, sans-serif;
+	}
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
@@ -19,7 +25,7 @@
 }
 
 :root {
-	--font-sans: 'FireSans', sans-serif;
+	--font-sans: 'FireSans', system-ui, sans-serif;
 }
 
 :root {
@@ -75,12 +81,12 @@ body {
 	@apply bg-black text-light-purple-fax;
 }
 
-@font-face {
+/* @font-face {
 	font-family: FireSans;
 	font-style: normal;
 	font-weight: 300;
 	src: url(/fonts/firasans-light.woff2) format('woff2');
-}
+} */
 @font-face {
 	font-family: FireSans;
 	font-style: normal;
@@ -99,7 +105,7 @@ body {
 	font-weight: 500;
 	src: url(/fonts/firasans-medium-italic.woff2) format('woff2');
 }
-@font-face {
+/* @font-face {
 	font-family: FireSans;
 	font-style: normal;
 	font-weight: 600;
@@ -116,13 +122,15 @@ body {
 	font-style: normal;
 	font-weight: 800;
 	src: url(/fonts/firasans-extrabold.woff2) format('woff2');
-}
+} */
+
 @font-face {
 	font-family: sam-font;
 	src: url(/fonts/sam-font.woff) format('woff');
 	font-weight: 400;
 	font-style: normal;
 }
+
 [data-icon]:before {
 	content: attr(data-icon);
 }
