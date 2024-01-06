@@ -1,4 +1,4 @@
-@import '@angular/cdk/overlay-prebuilt.css';
+/* @import '@angular/cdk/overlay-prebuilt.css'; */
 
 /* Tailwind directives  */
 @tailwind base;
@@ -167,37 +167,19 @@ body {
 	max-width: 30px;
 }
 
-.circle-display {
-	border: 1px solid var(--blue);
-	width: 125px;
-	height: 125px;
-	border-radius: 1000px;
-	display: -webkit-box;
-	display: flex;
-	-webkit-box-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	align-items: center;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	flex-flow: column;
-	padding: 15px;
-	box-shadow: 4px 8px 10px 0.5px #22282f;
-}
-
-.circle-display.circle--primary {
+.circle--primary {
 	@apply border-2 border-solid border-ocean-blue bg-hip-black text-ocean-blue;
 }
 
-.circle-display.circle--primary .circle-display__description,
-.circle-display.circle--secondary .circle-display__description {
+.circle--primary .circle-display__description,
+.circle--secondary .circle-display__description {
 	@apply text-xs italic text-light-purple-fax;
 }
 
-.circle-display.circle--secondary .circle-display__description {
+.circle--secondary .circle-display__description {
 	@apply text-xs italic text-hip-black;
 }
 
-.circle-display.circle--secondary {
+.circle--secondary {
 	@apply border-2 bg-ocean-blue text-black;
 }
