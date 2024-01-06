@@ -61,7 +61,11 @@ import SkillsComponent from '../content/skills.component';
 			>
 				<app-skills></app-skills>
 			</section>
-			<section id="contact" class="max-content-width mx-auto mb-40 mt-20 px-3">
+			<section
+				#contact
+				id="contact"
+				class="max-content-width mx-auto mb-40 mt-20 px-3"
+			>
 				<div class="flex flex-col md:flex-row">
 					<div class="mx-4 flex-1">
 						<h1 class="mb-6 text-center text-3xl font-bold md:text-5xl">
@@ -99,14 +103,16 @@ import SkillsComponent from '../content/skills.component';
 
 					<div class="flex-1">
 						<div class="md:mt-12">
-							<img
-								class="mx-auto my-0 h-[186px] w-[364px]"
-								ngSrc="/images/SAM_1.svg"
-								width="364"
-								height="186"
-								priority
-								alt="Quetzal Bird Flying over the the Pyramids of Egypt illustrated to refer to Sammy's background"
-							/>
+							@defer (on viewport(contact)) {
+								<img
+									class="mx-auto my-0 h-[186px] w-[364px]"
+									ngSrc="/images/SAM_1.svg"
+									width="364"
+									height="186"
+									priority
+									alt="Quetzal Bird Flying over the the Pyramids of Egypt illustrated to refer to Sammy's background"
+								/>
+							}
 						</div>
 					</div>
 				</div>

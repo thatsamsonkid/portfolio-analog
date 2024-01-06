@@ -19,28 +19,31 @@ import NavItemComponent from './nav-item.component';
 			class="fixed bottom-5 right-5 flex-col overflow-hidden rounded-3xl data-[expanded=true]:bg-black/80 md:hidden"
 			[attr.data-expanded]="expanded()"
 		>
-			<ul
-				class="relative top-3 h-0 opacity-0 data-[expanded=true]:h-[300px] data-[expanded=true]:opacity-100"
-				id="menu"
-				role="menu"
-				aria-labelledby="menubutton"
-				[attr.data-expanded]="expanded()"
-				style="transition: height .3s ease,opacity .3s ease;"
-			>
-				@for (link of navLinks; track link.link) {
-					<li role="menuitem">
-						<app-nav-item [link]="link.link" [type]="link.type">
-							{{ link.altText }}
-						</app-nav-item>
-					</li>
-				}
-			</ul>
+			@defer (on interaction(trigger)) {
+				<ul
+					class="relative top-3 h-0 opacity-0 data-[expanded=true]:h-[300px] data-[expanded=true]:opacity-100"
+					id="menu"
+					role="menu"
+					aria-labelledby="menubutton"
+					[attr.data-expanded]="expanded()"
+					style="transition: height .3s ease,opacity .3s ease;"
+				>
+					@for (link of navLinks; track link.link) {
+						<li role="menuitem">
+							<app-nav-item [link]="link.link" [type]="link.type">
+								{{ link.altText }}
+							</app-nav-item>
+						</li>
+					}
+				</ul>
+			}
 			<div
 				class="hidden h-[45px] min-h-[45px] w-[45px] items-center justify-center md:flex"
 			>
 				<div class="h-[12px] w-[2px] bg-ocean-blue"></div>
 			</div>
 			<button
+				#trigger
 				title="Menu Button"
 				id="menubutton"
 				aria-haspopup="true"
