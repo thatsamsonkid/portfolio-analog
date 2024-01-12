@@ -7,7 +7,6 @@ import {
 	QueryList,
 	ViewChild,
 	ViewChildren,
-	computed,
 	inject,
 	signal,
 } from '@angular/core';
@@ -40,12 +39,14 @@ import { WindowService } from '../core/window.service';
 				aria-label="tabs example"
 			>
 				<button
+					#fullTimeTab="brnTabsTrigger"
 					brnTabsTrigger="fulltime"
 					class="h-12 data-[state=inactive]:opacity-70"
 				>
 					Employee
 				</button>
 				<button
+					#contractorTab="brnTabsTrigger"
 					brnTabsTrigger="contractor"
 					class="h-12 data-[state=inactive]:opacity-70"
 				>
@@ -65,7 +66,7 @@ import { WindowService } from '../core/window.service';
 				}
 			</div>
 			<div class="p-3" brnTabsContent="fulltime">
-				<div class="mb-6" [attr.data-active]="fullTimeTabActive()">
+				<div class="mb-6" [attr.data-active]="fullTimeTab.selected()">
 					<h2 class="mb-1">
 						Amtrak -
 						<span class="italic text-ocean-blue">Lead Software Engineer</span>
@@ -116,7 +117,7 @@ import { WindowService } from '../core/window.service';
 				</div>
 			</div>
 			<div class="p-3 " brnTabsContent="contractor">
-				<div class="mb-6" [attr.data-active]="contractorTabActive()">
+				<div class="mb-6" [attr.data-active]="contractorTab.selected()">
 					<h2 class="mb-1">
 						Anheuser-Busch InBev -
 						<span class="italic text-ocean-blue">Software Engineer</span>
@@ -164,9 +165,6 @@ export default class ExperienceComponent implements OnInit {
 
 	activeTab = signal('');
 
-	fullTimeTabActive = computed(() => this.activeTab() === 'fulltime');
-	contractorTabActive = computed(() => this.activeTab() === 'contractor');
-
 	private windowService = inject(WindowService);
 
 	private injector = inject(Injector);
@@ -198,11 +196,10 @@ export default class ExperienceComponent implements OnInit {
 
 	updateTabHighlight(val: string): void {
 		const tabs = this.tabTriggers.toArray();
-		// @ts-ignore
-		const activeTab = tabs.find((tab) => tab._key === val);
-		// @ts-ignore
-		this.width.set(activeTab._elementRef.nativeElement.offsetWidth);
-		// @ts-ignore
-		this.left.set(activeTab._elementRef.nativeElement.offsetLeft);
+		const activeTab = tabs.find((tab) => tab.key === val);
+		if (activeTab) {
+			this.width.set(activeTab.elementRef.nativeElement.offsetWidth);
+			this.left.set(activeTab.elementRef.nativeElement.offsetLeft);
+		}
 	}
 }
