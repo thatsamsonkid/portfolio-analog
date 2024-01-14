@@ -65,8 +65,8 @@ import { WindowService } from '../core/window.service';
 					></span>
 				}
 			</div>
-			<div class="p-3" brnTabsContent="fulltime">
-				<div class="mb-6" [attr.data-active]="fullTimeTab.selected()">
+			<div class="animate-fade-right p-3" brnTabsContent="fulltime">
+				<div class="mb-6">
 					<h2 class="mb-1">
 						Amtrak -
 						<span class="italic text-ocean-blue">Lead Software Engineer</span>
@@ -116,8 +116,8 @@ import { WindowService } from '../core/window.service';
 					</ul>
 				</div>
 			</div>
-			<div class="p-3 " brnTabsContent="contractor">
-				<div class="mb-6" [attr.data-active]="contractorTab.selected()">
+			<div class="animate-fade-left p-3" brnTabsContent="contractor">
+				<div class="mb-6">
 					<h2 class="mb-1">
 						Anheuser-Busch InBev -
 						<span class="italic text-ocean-blue">Software Engineer</span>
