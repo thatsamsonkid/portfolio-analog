@@ -15,7 +15,9 @@ import {
 		provideIcons({ faBrandGithub, faBrandLinkedin, faBrandXTwitter }),
 	],
 	template: `
-		<div class="bg-ocean-blue z-10 px-3 pb-3 pt-4 text-black">
+		<div
+			class="z-10 min-h-[116px] w-full bg-ocean-blue px-3 pb-3 pt-4 text-black"
+		>
 			<div class="max-content-width mx-auto">
 				<div class="flex flex-col justify-between gap-2 text-center">
 					<div>
