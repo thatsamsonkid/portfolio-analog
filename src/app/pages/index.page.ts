@@ -30,7 +30,9 @@ import SkillsComponent from '../content/skills.component';
 				class="flex min-h-screen flex-col items-center justify-center"
 				id="home"
 			>
-				<div>
+				<div
+					class="min-h-[64px] min-w-[250px] md:min-h-[96px] md:min-w-[560px]"
+				>
 					<h1
 						class="text-3xl leading-7 tracking-wide text-white md:text-6xl md:tracking-widest"
 					>
