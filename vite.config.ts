@@ -56,5 +56,6 @@ export default defineConfig(({ mode }) => ({
 	},
 	define: {
 		'import.meta.vitest': mode !== 'production',
+		ngDevMode: 'undefined',
 	},
 }));
