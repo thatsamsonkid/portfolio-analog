@@ -9,6 +9,7 @@ import {
 import NavigationComponent from '../components/navigation/navigation.component';
 import AboutMeComponent from '../content/about-me.component';
 import ExperienceComponent from '../content/experience.component';
+import { ProjectsComponent } from '../content/projects.component';
 import SkillsComponent from '../content/skills.component';
 @Component({
 	selector: 'app-home',
@@ -20,6 +21,7 @@ import SkillsComponent from '../content/skills.component';
 		ExperienceComponent,
 		NgIconComponent,
 		NgOptimizedImage,
+		ProjectsComponent,
 	],
 	providers: [
 		provideIcons({ faBrandGithub, faBrandLinkedin, faBrandXTwitter }),
@@ -42,26 +44,29 @@ import SkillsComponent from '../content/skills.component';
 						Just a Dev
 					</p>
 				</div>
-				<app-navigation></app-navigation>
+				<app-navigation />
 			</section>
 
 			<section
 				id="about"
 				class="max-content-width mx-auto mb-20 min-h-screen px-5 md:px-12"
 			>
-				<about-me></about-me>
+				<about-me />
+			</section>
+			<section id="about" class="max-content-width mx-auto mb-36 px-5 md:px-12">
+				<app-projects />
 			</section>
 			<section
 				id="professional"
 				class="max-content-width mx-auto min-h-screen px-5 md:px-12"
 			>
-				<app-exp></app-exp>
+				<app-exp />
 			</section>
 			<section
 				id="skills"
 				class="max-content-width mx-auto my-20 min-h-screen px-5 md:px-12"
 			>
-				<app-skills></app-skills>
+				<app-skills />
 			</section>
 			<section
 				#contact
@@ -83,7 +88,7 @@ import SkillsComponent from '../content/skills.component';
 										<ng-icon
 											class="mr-2 mt-1 inline-block w-[13.5px] md:w-[16.5px]"
 											name="faBrandLinkedin"
-										></ng-icon>
+										/>
 										<span>Connect with me on LinkedIn</span>
 									</a>
 								</li>
@@ -95,7 +100,7 @@ import SkillsComponent from '../content/skills.component';
 										<ng-icon
 											class="mr-2  inline-block w-[13.5px] md:w-[16.5px]"
 											name="faBrandXTwitter"
-										></ng-icon>
+										/>
 										<span>Follow me on X</span>
 									</a>
 								</li>

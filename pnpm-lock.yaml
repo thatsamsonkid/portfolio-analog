@@ -45,11 +45,11 @@ importers:
         specifier: 18.2.9
         version: 18.2.9(@angular/common@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@18.2.9(@angular/animations@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0)))(rxjs@7.8.1)
       '@ng-icons/core':
-        specifier: ^26.3.0
-        version: 26.5.0
+        specifier: ^29.5.2
+        version: 29.5.2(@angular/common@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@ng-icons/font-awesome':
-        specifier: ^26.3.0
-        version: 26.5.0
+        specifier: ^29.5.2
+        version: 29.5.2
       '@nx/angular':
         specifier: 20.0.6
         version: 20.0.6(@angular-devkit/build-angular@18.2.9(@angular/compiler-cli@18.2.9(@angular/compiler@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.4))(@angular/platform-server@18.2.9(@angular/animations@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/compiler@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@18.2.9(@angular/animations@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))))(@types/node@22.8.1)(chokidar@3.6.0)(stylus@0.59.0)(tailwindcss@3.4.14(ts-node@10.9.1(@types/node@22.8.1)(typescript@5.5.4)))(typescript@5.5.4))(@angular-devkit/core@18.2.10(chokidar@3.6.0))(@angular-devkit/schematics@18.2.10(chokidar@3.6.0))(@babel/traverse@7.25.9)(@schematics/angular@18.2.10(chokidar@3.6.0))(@types/node@22.8.1)(@zkochan/js-yaml@0.0.7)(eslint@8.57.1)(nx@20.0.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rxjs@7.8.1)(typescript@5.5.4)
@@ -2008,11 +2008,15 @@ packages:
     resolution: {integrity: sha512-q3L9i3HoNfz0SGpTIS4zTcKBbRkxzCRpd169eyiTuk3IwcPC3/85mzLHranlKo2b+HYT0gu37YxGB45aD8A3Tw==}
     engines: {node: '>=18.0.0'}
 
-  '@ng-icons/core@26.5.0':
-    resolution: {integrity: sha512-QaincZw6O22pNuI/7lwM1fVeEFANRNAHNi+TYwCn2bAt7v91Fzj7g44J1cyOoApdqkanSWZUWbuyzznPFimOEw==}
+  '@ng-icons/core@29.5.2':
+    resolution: {integrity: sha512-GRbNsy8syOa7ccW5rG+lkoNCLF2XPv4W7VBz0X+X7SYHVG/wB9IofX1IRjjegFXCbv8OYh+PJU0wLONCDfnAuQ==}
+    peerDependencies:
+      '@angular/common': '>=18.0.0'
+      '@angular/core': '>=18.0.0'
+      rxjs: ^6.5.3 || ^7.4.0
 
-  '@ng-icons/font-awesome@26.5.0':
-    resolution: {integrity: sha512-R5Iw9xLfmaXBNSctc+q8M86UR2Pn2srSJpElMLJblddTuVXi9kEx4xCJBEXZfrAVfsusVRI0CIht4Ey6bOqlSQ==}
+  '@ng-icons/font-awesome@29.5.2':
+    resolution: {integrity: sha512-IQfmrsMlkjCWXEZv/5XPjMIY6WjTHx+l8AD7Fydh8G5ZH2jpXhw8IqL8y+CHeAdwNdUWNXZTHW1yDkZZ9xBtcA==}
 
   '@ngtools/webpack@18.2.9':
     resolution: {integrity: sha512-/apDvs4qevjSWoYw3h3/c/mILFrf2EgCJfBy9f3E7PEgi2tjifOIszBRrLQkVpeHAaFgEH8zKS2ol0hAmOl8sw==}
@@ -10588,11 +10592,14 @@ snapshots:
       '@netlify/node-cookies': 0.1.0
       urlpattern-polyfill: 8.0.2
 
-  '@ng-icons/core@26.5.0':
+  '@ng-icons/core@29.5.2(@angular/common@18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)':
     dependencies:
+      '@angular/common': 18.2.9(@angular/core@18.2.9(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
+      '@angular/core': 18.2.9(rxjs@7.8.1)(zone.js@0.15.0)
+      rxjs: 7.8.1
       tslib: 2.8.0
 
-  '@ng-icons/font-awesome@26.5.0':
+  '@ng-icons/font-awesome@29.5.2':
     dependencies:
       tslib: 2.8.0
 
