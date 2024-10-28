@@ -38,6 +38,7 @@ import { SpartanIconComponent } from '../components/logos/spartan.component';
 					href="https://github.com/goetzrobin/spartan"
 					target="_blank"
 				>
+					<span class="sr-only">Spartan UI Github Page</span>
 					<ng-icon class="m-3 inline-block" size="2em" name="faBrandGithub" />
 				</a>
 
@@ -46,6 +47,7 @@ import { SpartanIconComponent } from '../components/logos/spartan.component';
 					href="https://www.spartan.ng/"
 					target="_blank"
 				>
+					<span class="sr-only">Spartan UI Web Page</span>
 					<ng-icon class="m-3 inline-block" size="2em" name="faCompass" />
 				</a>
 			</div>
