@@ -1,23 +1,18 @@
-import { AsyncPipe } from '@angular/common';
 import {
 	ChangeDetectionStrategy,
 	Component,
-	Injector,
-	OnInit,
-	QueryList,
-	ViewChild,
-	ViewChildren,
+	computed,
 	inject,
 	signal,
+	viewChildren,
 } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { toSignal } from '@angular/core/rxjs-interop';
 import {
 	BrnTabsContentDirective,
 	BrnTabsDirective,
 	BrnTabsListDirective,
 	BrnTabsTriggerDirective,
 } from '@spartan-ng/ui-tabs-brain';
-import { Observable, tap } from 'rxjs';
 import { WindowService } from '../core/window.service';
 @Component({
 	selector: 'app-exp',
@@ -27,12 +22,15 @@ import { WindowService } from '../core/window.service';
 		BrnTabsContentDirective,
 		BrnTabsListDirective,
 		BrnTabsTriggerDirective,
-		AsyncPipe,
 	],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	template: `
 		<h1 class="mb-6 text-left text-5xl font-bold">Professional Experience</h1>
-		<div brnTabs="fulltime" class="w-full">
+		<div
+			[brnTabs]="activeTabId()"
+			class="w-full"
+			(tabActivated)="updateActivatedTab($any($event))"
+		>
 			<div
 				brnTabsList
 				class="relative grid w-full grid-cols-2"
@@ -52,18 +50,12 @@ import { WindowService } from '../core/window.service';
 				>
 					Contractor
 				</button>
-
-				@if ({
-					windowResize: windowResize$ | async,
-					tabChange: tabValueChange$ | async
-				}) {
-					<span
-						class="absolute bottom-0 h-[2px] bg-ocean-blue"
-						style="left: {{ left() }}px; width: {{
-							width()
-						}}px;transition: width .3s,left .3s;"
-					></span>
-				}
+				<span
+					class="absolute bottom-0 h-[2px] bg-ocean-blue"
+					style="left: {{ left() }}px; width: {{
+						width()
+					}}px;transition: width .3s,left .3s;"
+				></span>
 			</div>
 			<div class="animate-fade-right p-3" brnTabsContent="fulltime">
 				<div class="mb-6">
@@ -159,47 +151,37 @@ import { WindowService } from '../core/window.service';
 		</div>
 	`,
 })
-export default class ExperienceComponent implements OnInit {
-	width = signal(0);
-	left = signal(0);
-
-	activeTab = signal('');
+export default class ExperienceComponent {
+	protected activeTabId = signal<string>('fulltime');
 
 	private windowService = inject(WindowService);
+	private windowSize = toSignal(this.windowService.resizeObserver);
+	private tabTriggers = viewChildren(BrnTabsTriggerDirective);
 
-	private injector = inject(Injector);
+	private activeTabEl = computed(() => {
+		if (!this.activeTabId()) {
+			return null;
+		}
+		const activeTab = this.tabTriggers().find(
+			(tab) => tab.key === this.activeTabId(),
+		);
+		return activeTab ?? null;
+	});
 
-	windowResize$ = this.windowService.resizeObserver.pipe(
-		tap(() => this.activeTab() && this.updateTabHighlight(this.activeTab())),
+	protected width = computed(
+		() =>
+			this.activeTabEl() &&
+			this.windowSize() &&
+			this.activeTabEl()?.elementRef?.nativeElement?.offsetWidth,
+	);
+	protected left = computed(
+		() =>
+			this.activeTabEl() &&
+			this.windowSize() &&
+			this.activeTabEl()?.elementRef.nativeElement.offsetLeft,
 	);
 
-	tabValueChange$!: Observable<string | undefined>;
-
-	@ViewChild(BrnTabsDirective, { static: true })
-	tab!: BrnTabsDirective;
-
-	@ViewChildren(BrnTabsTriggerDirective)
-	tabTriggers!: QueryList<BrnTabsTriggerDirective>;
-
-	ngOnInit(): void {
-		this.tabValueChange$ = toObservable(this.tab.$value, {
-			injector: this.injector,
-		}).pipe(
-			tap((val) => {
-				if (val) {
-					this.activeTab.set(val);
-					this.updateTabHighlight(val);
-				}
-			}),
-		);
-	}
-
-	updateTabHighlight(val: string): void {
-		const tabs = this.tabTriggers.toArray();
-		const activeTab = tabs.find((tab) => tab.key === val);
-		if (activeTab) {
-			this.width.set(activeTab.elementRef.nativeElement.offsetWidth);
-			this.left.set(activeTab.elementRef.nativeElement.offsetLeft);
-		}
+	updateActivatedTab(tabId: string): void {
+		this.activeTabId.set(tabId);
 	}
 }
